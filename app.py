@@ -29,7 +29,11 @@ with col2:
 
 # 🔥 Progress bar
 st.write(f"📊 {progress*100:.1f}% used")
+<<<<<<< HEAD
 st.progress(min(progress, 1.0))
+=======
+st.progress(min(progress, 1.0))  # ✅ safe limit
+>>>>>>> 59c9619fbbc77f4538b6ac810e91630f6903b74e
 
 # 🚦 Smart status
 if progress >= 0.95:
@@ -41,12 +45,19 @@ elif progress < 0.3:
 else:
     st.info("🟡 Balanced usage")
 
+<<<<<<< HEAD
 # 💾 File path
+=======
+# 💾 Save data
+>>>>>>> 59c9619fbbc77f4538b6ac810e91630f6903b74e
 file = "usage.csv"
 
 col_save, col_reset = st.columns(2)
 
+<<<<<<< HEAD
 # 💾 Save data
+=======
+>>>>>>> 59c9619fbbc77f4538b6ac810e91630f6903b74e
 with col_save:
     if st.button("💾 Save Today’s Usage"):
         if os.path.exists(file):
@@ -69,7 +80,10 @@ with col_save:
 
         st.success("Saved successfully!")
 
+<<<<<<< HEAD
 # 🗑 Reset data
+=======
+>>>>>>> 59c9619fbbc77f4538b6ac810e91630f6903b74e
 with col_reset:
     if st.button("🗑 Reset Data"):
         if os.path.exists(file):
@@ -81,6 +95,7 @@ if os.path.exists(file):
     data = pd.read_csv(file)
 
     if not data.empty:
+<<<<<<< HEAD
         # ✅ Fix date properly
         data["date"] = pd.to_datetime(data["date"])
 
@@ -93,11 +108,22 @@ if os.path.exists(file):
         fig = px.bar(
             data,
             x="date_str",
+=======
+        data["date"] = pd.to_datetime(data["date"])
+
+        fig = px.bar(
+            data,
+            x="date",
+>>>>>>> 59c9619fbbc77f4538b6ac810e91630f6903b74e
             y="usage",
             title="📊 Daily Usage",
             text="usage"
         )
 
+<<<<<<< HEAD
+=======
+        # 🎨 Styling
+>>>>>>> 59c9619fbbc77f4538b6ac810e91630f6903b74e
         fig.update_layout(
             template="plotly_dark",
             xaxis_title="Date",
@@ -110,9 +136,14 @@ if os.path.exists(file):
         )
 
         st.plotly_chart(fig, use_container_width=True)
+<<<<<<< HEAD
 
     else:
         st.info("No data yet. Save your first entry 🚀")
 
+=======
+    else:
+        st.info("No data yet. Save your first entry 🚀")
+>>>>>>> 59c9619fbbc77f4538b6ac810e91630f6903b74e
 else:
     st.info("No data yet. Save your first entry 🚀")
